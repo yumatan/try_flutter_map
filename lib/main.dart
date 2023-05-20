@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:try_flutter_map/firebase_options.dart';
+import 'package:try_flutter_map/logic/map_logic.dart';
+
+import 'model/repository/impl/offline_map_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var title = 'Web Images';
+    //final logic = MapLogic(OnlineMapRepository());
+    final logic = MapLogic(OfflineMapRepository());
 
     return MaterialApp(
       title: title,
@@ -23,8 +28,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body:
-            Image.network('https://cyberjapandata.gsi.go.jp/xyz/std/0/0/0.png'),
+        body: Image.network(logic.fetchMapImage()),
       ),
     );
   }
