@@ -5,6 +5,7 @@
         "source.organizeImports": true,
     },
     "dart.flutterSdkPath": ".fvm/flutter_sdk",
+    "dart.previewFlutterUiGuides": true,
     "search.exclude": {
         "**/.fvm": true
     },
